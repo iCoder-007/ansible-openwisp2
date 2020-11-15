@@ -43,6 +43,9 @@ INSTALLED_APPS = [
 {% if openwisp2_network_topology %}
     'openwisp_network_topology',
 {% endif %}
+{% if openwisp2_firmware_upgrader %}
+    'openwisp_firmware_upgrader',
+{% endif %}
     # admin
     'django.contrib.admin',
     'django.forms',

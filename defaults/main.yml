@@ -1,8 +1,10 @@
 openwisp2_python: python3
 ansible_python_interpreter: /usr/bin/python3
 openwisp2_network_topology: false
+openwisp2_radius: false
 openwisp2_controller_version: "0.7.post1"
 openwisp2_network_topology_version: "0.4"
+openwisp2_radius_version: "0.1"
 openwisp2_controller_pip: false
 openwisp2_users_pip: false
 openwisp2_utils_pip: false
@@ -11,6 +13,7 @@ openwisp2_django_x509_pip: false
 openwisp2_django_loci_pip: false
 openwisp2_netjsonconfig_pip: false
 openwisp2_network_topology_pip: false
+openwisp2_radius_pip: false
 openwisp2_extra_python_packages: [bpython]
 openwisp2_extra_django_apps: []
 openwisp2_extra_django_settings: {}
@@ -86,3 +89,24 @@ openwisp2_celery_worker_prefetch_multiplier: 1
 openwisp2_celery_task_acks_late: True
 openwisp2_django_celery_logging: False
 postfix_smtpd_relay_restrictions_override: "permit_sasl_authenticated, permit_mynetworks, check_relay_domains, reject_unauth_destination, reject"
+freeradius_dir: /etc/freeradius/3.0
+freeradius_mods_available_dir: "{{ freeradius_dir }}/mods-available"
+freeradius_mods_enabled_dir: "{{ freeradius_dir }}/mods-enabled"
+freeradius_sites_available_dir: "{{ freeradius_dir }}/sites-available"
+freeradius_sites_enabled_dir: "{{ freeradius_dir }}/sites-enabled"
+freeradius_sql:
+    driver: rlm_sql_postgresql
+    dialect: postgresql
+    host: localhost
+    port: 5432
+    dbname: freeradius
+    user: admin
+    password: admin
+freeradius_rest:
+    url: "https://{{ inventory_hostname }}/api/v1/freeradius"
+openwisp2_users_auth_api: true
+openwisp2_radius_sms_backend: "sendsms.backends.console.SmsBackend"
+openwisp2_radius_extra_nas_types: >
+    [('cisco', 'Cisco Router')]
+openwisp2_radius_sms_token_max_ip_daily: 25
+openwisp2_freeradius_allowed_hosts: ["127.0.0.1"]

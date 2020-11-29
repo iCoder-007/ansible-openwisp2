@@ -14,3 +14,6 @@
 
 - name: start redis
   service: name=redis state=started
+
+- name: restart freeradius
+  service: name=freeradius state=restarted

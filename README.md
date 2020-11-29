@@ -524,7 +524,7 @@ Below are listed all the variables you can customize (you may also want to take 
     - openwisp.openwisp2
   vars:
     # openwisp-controler version
-    openwisp2_controller_version: "0.4"
+    openwisp2_controller_version: "0.7.post1"
     # optional openwisp2 modules
     openwisp2_network_topology: false
     openwisp2_network_topology_version: "0.4"
